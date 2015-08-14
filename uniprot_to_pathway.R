@@ -14,8 +14,6 @@ library(reshape2)
 # Helper functions to fetch pathways from target uniprot 
 
 target_to_KEGG = function(uniprot) {
-    i <<- i +1
-    if(i %% 10 == 0) cat(i,'\n')
     # convert uniprot to kegg gene id
     hsa_ids = unlist(keggConv('hsa',paste('uniprot:',uniprot,sep='')))
     # get pathway ids for kegg gene id
@@ -36,10 +34,7 @@ target_to_KEGG = function(uniprot) {
 }
  
 
-target_to_reactome = function(uniprot) {   # WARNING: UNTESTED VERSION --- older version is deprecated
-  i <<- i +1
-  if(i %% 10 == 0) cat(i,'\n')
-  
+target_to_reactome = function(uniprot) {   # WARNING: UNTESTED VERSION --- older version is deprecated  
   # Get Entrez id from Uniprot ID of targets selected above
   entrez_ids = try(select(org.Hs.eg.db,
                           keys = uniprot,
